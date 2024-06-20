@@ -7,6 +7,19 @@ on:
   workflow_call:
   push:
 
+# Downstream
+
+on:
+  merge_group:
+  push:
+    branches-ignore:
+    # temporary GH branches relating to merge queues (jaraco/skeleton#93)
+    - gh-readonly-queue/**
+    tags:
+    # required if branches-ignore is supplied (jaraco/skeleton#103)
+    - '**'
+  pull_request:
+
 permissions:
   contents: read
 
@@ -116,17 +129,3 @@ jobs:
         env:
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
----
-# Downstream
-
-on:
-  merge_group:
-  push:
-    branches-ignore:
-    # temporary GH branches relating to merge queues (jaraco/skeleton#93)
-    - gh-readonly-queue/**
-    tags:
-    # required if branches-ignore is supplied (jaraco/skeleton#103)
-    - '**'
-  pull_request:
