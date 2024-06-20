@@ -5,7 +5,7 @@ on:
   workflow_call:
   push:
 
-'':
+eventObject:
   downstream:
     on:
       merge_group:
