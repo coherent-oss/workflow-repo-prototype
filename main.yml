@@ -1,7 +1,5 @@
-# The main workflow.
-upstream:
-  .github/workflows/main.yml
-downstream:
+workflow: .github/workflows/main.yml
+include:
   on:
     merge_group:
     push:
