@@ -1,0 +1,14 @@
+# The main workflow.
+upstream:
+  .github/workflows/main.yml
+downstream:
+  on:
+    merge_group:
+    push:
+      branches-ignore:
+      # temporary GH branches relating to merge queues (jaraco/skeleton#93)
+      - gh-readonly-queue/**
+      tags:
+      # required if branches-ignore is supplied (jaraco/skeleton#103)
+      - '**'
+    pull_request:
