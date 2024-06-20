@@ -1,28 +1,9 @@
 # Copied from https://github.com/jaraco/skeleton/blob/a595a0fad054cd20b69d3e954c99174e3a548938/.github/workflows/main.yml
 name: tests
 
-# Upstream
-
 on:
   workflow_call:
   push:
-
-# Downstream
-
-_:
-  on:
-    merge_group:
-    push:
-      branches-ignore:
-      # temporary GH branches relating to merge queues (jaraco/skeleton#93)
-      - gh-readonly-queue/**
-      tags:
-      # required if branches-ignore is supplied (jaraco/skeleton#103)
-      - '**'
-    pull_request:
-
-permissions:
-  contents: read
 
 env:
   # Environment variable to support color support (jaraco/skeleton#66)
@@ -37,6 +18,20 @@ env:
   TOX_OVERRIDE: >-
     testenv.pass_env+=GITHUB_*,FORCE_COLOR
 
+  DOWNSTREAM:
+    on:
+      merge_group:
+      push:
+        branches-ignore:
+        # temporary GH branches relating to merge queues (jaraco/skeleton#93)
+        - gh-readonly-queue/**
+        tags:
+        # required if branches-ignore is supplied (jaraco/skeleton#103)
+        - '**'
+      pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   test:
