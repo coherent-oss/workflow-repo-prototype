@@ -1,3 +1,4 @@
+# Copied from https://github.com/jaraco/skeleton/blob/a595a0fad054cd20b69d3e954c99174e3a548938/.github/workflows/main.yml
 name: tests
 
 on:
