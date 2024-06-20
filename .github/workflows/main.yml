@@ -1,21 +1,6 @@
 # Copied from https://github.com/jaraco/skeleton/blob/a595a0fad054cd20b69d3e954c99174e3a548938/.github/workflows/main.yml
 name: tests
 
----
-# Downstream
-
-on:
-  merge_group:
-  push:
-    branches-ignore:
-    # temporary GH branches relating to merge queues (jaraco/skeleton#93)
-    - gh-readonly-queue/**
-    tags:
-    # required if branches-ignore is supplied (jaraco/skeleton#103)
-    - '**'
-  pull_request:
-
----
 # Upstream
 
 on:
@@ -131,3 +116,17 @@ jobs:
         env:
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+---
+# Downstream
+
+on:
+  merge_group:
+  push:
+    branches-ignore:
+    # temporary GH branches relating to merge queues (jaraco/skeleton#93)
+    - gh-readonly-queue/**
+    tags:
+    # required if branches-ignore is supplied (jaraco/skeleton#103)
+    - '**'
+  pull_request:
