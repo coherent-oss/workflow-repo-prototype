@@ -5,17 +5,18 @@ on:
   workflow_call:
   push:
 
-_downstream:
-  on:
-    merge_group:
-    push:
-      branches-ignore:
-      # temporary GH branches relating to merge queues (jaraco/skeleton#93)
-      - gh-readonly-queue/**
-      tags:
-      # required if branches-ignore is supplied (jaraco/skeleton#103)
-      - '**'
-    pull_request:
+configuration:
+  downstream:
+    on:
+      merge_group:
+      push:
+        branches-ignore:
+        # temporary GH branches relating to merge queues (jaraco/skeleton#93)
+        - gh-readonly-queue/**
+        tags:
+        # required if branches-ignore is supplied (jaraco/skeleton#103)
+        - '**'
+      pull_request:
 
 permissions:
   contents: read
