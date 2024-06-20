@@ -1,5 +1,6 @@
-workflow: .github/workflows/main.yml
-include:
+workflows: 
+- .github/workflows/main.yml
+downstream:
   on:
     merge_group:
     push:
